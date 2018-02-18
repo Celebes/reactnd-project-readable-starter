@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router'
+import Posts from "./Posts";
 
 class MainPage extends Component {
     render() {
@@ -9,7 +10,6 @@ class MainPage extends Component {
 
         return (
             <div>
-                <h1>MainPage</h1>
                 <h1>Categories:</h1>
                 <div className="categories">
                     {categories.map(category => (
@@ -20,13 +20,17 @@ class MainPage extends Component {
                     ))}
                 </div>
                 <h1>Posts:</h1>
+                <Posts/>
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return {}
+    console.log('MainPage state', state);
+    return {
+        posts: state.posts
+    }
 }
 
 export default withRouter(connect(mapStateToProps)(MainPage));

@@ -17,7 +17,7 @@ class App extends Component {
         return (
             <div className="container">
                 <nav className="navbar navbar-light bg-faded">
-                    <Link to="/" className="navbar-brand">Readable</Link>
+                    <Link to="/" className="navbar-brand"><b>Readable</b></Link>
                 </nav>
                 <Route exact path="/" render={() => (
                     <MainPage categories={categories}/>
@@ -33,7 +33,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state', state);
+    console.log('App state', state);
     return {
         categories: state.categories
     }

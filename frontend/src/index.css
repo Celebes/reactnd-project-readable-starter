@@ -12,3 +12,11 @@ nav {
 .categories button {
     margin-right: 5px;
 }
+
+.post {
+    margin-bottom: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    width: 100%;
+    background-color: aliceblue;
+}
