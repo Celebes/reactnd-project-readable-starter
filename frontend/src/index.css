@@ -7,6 +7,7 @@ body {
 nav {
     background-color: darkgrey;
     color: white;
+    border: 1px solid black;
 }
 
 .categories button {
@@ -19,4 +20,8 @@ nav {
     padding: 5px;
     width: 100%;
     background-color: aliceblue;
+}
+
+.change-order-button {
+    margin-bottom: 15px;
 }

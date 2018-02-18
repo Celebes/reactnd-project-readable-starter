@@ -2,12 +2,24 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
 import {fetchPosts} from "../actions";
-import {timestampToDate} from "../utils/helper"
+import {timestampToDate, sortPostsByTimestamp, sortPostsByVoteScore} from "../utils/helper"
 import {Link} from 'react-router-dom';
 
 class Posts extends Component {
+    state = {
+        orderBy: 'voteScore' // or 'timestamp'
+    }
+
     componentDidMount() {
         this.props.dispatch(fetchPosts());
+    }
+
+    changeOrderBy() {
+        const {orderBy} = this.state;
+        const newOrderBy = orderBy === 'voteScore' ? 'timestamp' : 'voteScore'
+        this.setState({
+            orderBy: newOrderBy
+        })
     }
 
     getCategoryPathFromName(categoryName) {
@@ -17,20 +29,34 @@ class Posts extends Component {
     }
 
     render() {
-        const {posts} = this.props;
+        let {posts} = this.props;
+        const {orderBy} = this.state;
+
+        posts = orderBy === 'voteScore' ? sortPostsByVoteScore(posts) : sortPostsByTimestamp(posts);
 
         return (
             <div className="container">
+                <div className="row">
+                    <button className="btn btn-primary change-order-button"
+                            onClick={() => this.changeOrderBy()}>
+                        Order by: <b>{orderBy}</b>
+                    </button>
+                </div>
                 {posts && posts.map(p => (
-                    <div key={p.id} className="row">
-                        <div className="post">
-                            <h3>{p.title}</h3>
+                    <div key={p.id} className="row post">
+                        <div className="col-1">
+                            {p.voteScore}
+                        </div>
+                        <div className="col">
                             <div>
-                                Posted by <b>{p.author}</b> {/*space*/}
-                                on <b>{timestampToDate(p.timestamp)}</b> {/*space*/}
-                                in <Link to={this.getCategoryPathFromName(p.category)}><b>{p.category}</b></Link>
+                                <h3>{p.title}</h3>
+                                <div>
+                                    Posted by <b>{p.author}</b> {/*space*/}
+                                    on <b>{timestampToDate(p.timestamp)}</b> {/*space*/}
+                                    in <Link to={this.getCategoryPathFromName(p.category)}><b>{p.category}</b></Link>
+                                </div>
+                                <div></div>
                             </div>
-                            <div></div>
                         </div>
                     </div>
                 ))}

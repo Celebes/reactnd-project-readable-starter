@@ -10,3 +10,11 @@ export function timestampToDate(timestamp) {
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
     return time;
 }
+
+export function sortPostsByTimestamp(posts) {
+    return posts.sort((a, b) => (a.timestamp < b.timestamp) ? 1 : ((a.timestamp > b.timestamp) ? -1 : 0))
+}
+
+export function sortPostsByVoteScore(posts) {
+    return posts.sort((a, b) => (a.voteScore < b.voteScore) ? 1 : ((a.voteScore > b.voteScore) ? -1 : 0))
+}
