@@ -8,3 +8,7 @@ nav {
     background-color: darkgrey;
     color: white;
 }
+
+.categories button {
+    margin-right: 5px;
+}
