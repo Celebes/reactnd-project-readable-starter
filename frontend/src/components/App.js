@@ -4,7 +4,7 @@ import MainPage from "./MainPage";
 import CategoryPage from "./CategoryPage";
 import {Route, Link} from 'react-router-dom';
 import {withRouter} from 'react-router'
-import PostDetails from "./PostDetails";
+import PostPage from "./PostPage";
 
 class App extends Component {
     render() {
@@ -15,7 +15,7 @@ class App extends Component {
                 </nav>
                 <Route exact path="/" component={MainPage}/>
                 <Route exact path="/:category" component={CategoryPage}/>
-                <Route path="/:category/:postId" component={PostDetails}/>
+                <Route path="/:category/:postId" component={PostPage}/>
             </div>
         );
     }

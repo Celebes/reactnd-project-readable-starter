@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
-import {fetchPosts, fetchVoteOnPost} from "../actions";
-import {timestampToDate, sortPostsByTimestamp, sortPostsByVoteScore} from "../utils/helper"
-import {Link} from 'react-router-dom';
-import FaArrowUp from 'react-icons/lib/fa/arrow-up';
-import FaArrowDown from 'react-icons/lib/fa/arrow-down';
+import {fetchPosts} from "../actions";
+import {sortPostsByTimestamp, sortPostsByVoteScore} from "../utils/helper"
+import Post from "./Post";
 
 class Posts extends Component {
     state = {
@@ -24,16 +22,6 @@ class Posts extends Component {
         })
     }
 
-    getCategoryPathFromName(categoryName) {
-        const {categories} = this.props;
-        const category = categories.find(c => c.name === categoryName);
-        return '/' + (category ? category.path : categoryName);
-    }
-
-    vote(postId, voteType) {
-        this.props.dispatch(fetchVoteOnPost(postId, voteType));
-    }
-
     render() {
         const {orderBy} = this.state;
 
@@ -48,29 +36,8 @@ class Posts extends Component {
                         Order by: <b>{orderBy}</b>
                     </button>
                 </div>
-                {posts && posts.map(p => (
-                    <div key={p.id} className="row post">
-                        <div className="col-1 text-center">
-                            <button className="icon-btn" onClick={() => this.vote(p.id, 'upVote')}>
-                                <FaArrowUp/>
-                            </button>
-                            <h2 className="vote-score">{p.voteScore}</h2>
-                            <button className="icon-btn" onClick={() => this.vote(p.id, 'downVote')}>
-                                <FaArrowDown/>
-                            </button>
-                        </div>
-                        <div className="col">
-                            <div>
-                                <Link to={`${this.getCategoryPathFromName(p.category)}/${p.id}`}><h3>{p.title}</h3></Link>
-                                <div>
-                                    Posted by <b>{p.author}</b> {/*space*/}
-                                    on <b>{timestampToDate(p.timestamp)}</b> {/*space*/}
-                                    in <Link to={this.getCategoryPathFromName(p.category)}><b>{p.category}</b></Link>
-                                </div>
-                                <div><b>{p.commentCount}</b> comments | </div>
-                            </div>
-                        </div>
-                    </div>
+                {posts && posts.map(post => (
+                    <Post key={post.id} post={post} detailsPage={false}/>
                 ))}
             </div>
         )

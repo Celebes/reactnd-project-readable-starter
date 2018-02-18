@@ -18,3 +18,7 @@ export function sortPostsByTimestamp(posts) {
 export function sortPostsByVoteScore(posts) {
     return posts.sort((a, b) => (a.voteScore < b.voteScore) ? 1 : ((a.voteScore > b.voteScore) ? -1 : 0))
 }
+
+export function replacePostById(posts, post) {
+    return posts.map(p => p.id === post.id ? post : p);
+}

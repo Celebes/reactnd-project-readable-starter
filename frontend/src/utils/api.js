@@ -20,6 +20,12 @@ export function fetchComments(postId) {
         .then((res) => res.json());
 }
 
+export function fetchPost(postId) {
+    console.log('fetchPost', postId);
+    return fetch(`${ROOT_URL}/posts/${postId}`, AUTH_HEADER)
+        .then((res) => res.json());
+}
+
 export function voteOnPost(postId, voteType) {
     console.log('api -> voteOnPost', postId, voteType);
     return fetch(`${ROOT_URL}/posts/${postId}`, {
