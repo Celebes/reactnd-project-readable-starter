@@ -2,14 +2,18 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
 import Posts from "./Posts";
+import Categories from "./Categories";
 
 class CategoryPage extends Component {
     render() {
-        const {category} = this.props;
+        const category = this.props.location.pathname.substring(1);
 
         return (
             <div>
-                <h1>Category: <b>{category}</b></h1>
+                <h1><b>/r/{category}</b></h1>
+                <h1>Categories:</h1>
+                <Categories/>
+                <h1>Posts:</h1>
                 <Posts category={category}/>
             </div>
         )

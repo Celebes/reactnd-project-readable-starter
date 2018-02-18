@@ -1,42 +1,24 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchCategories} from "../actions";
 import MainPage from "./MainPage";
 import CategoryPage from "./CategoryPage";
 import {Route, Link} from 'react-router-dom';
 import {withRouter} from 'react-router'
+import PostDetails from "./PostDetails";
 
 class App extends Component {
-    componentDidMount() {
-        this.props.dispatch(fetchCategories());
-    }
-
     render() {
-        const {categories} = this.props;
-
         return (
             <div className="container">
                 <nav className="navbar navbar-light bg-faded">
                     <Link to="/" className="navbar-brand"><b>Readable</b></Link>
                 </nav>
-                <Route exact path="/" render={() => (
-                    <MainPage categories={categories}/>
-                )}/>
-                {categories.map(category => (
-                    <Route key={category.name} path={`/${category.path}`} render={() => (
-                        <CategoryPage category={category.name}/>
-                    )}/>
-                ))}
+                <Route exact path="/" component={MainPage}/>
+                <Route exact path="/:category" component={CategoryPage}/>
+                <Route path="/:category/:post_id" component={PostDetails}/>
             </div>
         );
     }
 }
 
-function mapStateToProps(state) {
-    console.log('App state', state);
-    return {
-        categories: state.categories
-    }
-}
-
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect()(App));

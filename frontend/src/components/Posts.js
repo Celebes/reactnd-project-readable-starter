@@ -6,6 +6,7 @@ import {timestampToDate, sortPostsByTimestamp, sortPostsByVoteScore} from "../ut
 import {Link} from 'react-router-dom';
 import FaArrowUp from 'react-icons/lib/fa/arrow-up';
 import FaArrowDown from 'react-icons/lib/fa/arrow-down';
+import PostDetails from "./PostDetails";
 
 class Posts extends Component {
     state = {
@@ -35,7 +36,7 @@ class Posts extends Component {
     }
 
     render() {
-        let {posts} = this.props;
+        let {posts, category} = this.props;
         const {orderBy} = this.state;
 
         posts = orderBy === 'voteScore' ? sortPostsByVoteScore(posts) : sortPostsByTimestamp(posts);
@@ -61,7 +62,7 @@ class Posts extends Component {
                         </div>
                         <div className="col">
                             <div>
-                                <h3>{p.title}</h3>
+                                <Link to={`${this.getCategoryPathFromName(p.category)}/${p.id}`}><h3>{p.title}</h3></Link>
                                 <div>
                                     Posted by <b>{p.author}</b> {/*space*/}
                                     on <b>{timestampToDate(p.timestamp)}</b> {/*space*/}
