@@ -14,3 +14,15 @@ export function fetchPosts() {
     return fetch(`${ROOT_URL}/posts`, AUTH_HEADER)
         .then((res) => res.json());
 }
+
+export function voteOnPost(postId, voteType) {
+    console.log('api -> voteOnPost', postId, voteType);
+    return fetch(`${ROOT_URL}/posts/${postId}`, {
+        headers: {
+            'Authorization': 'whatever-you-want',
+            'content-type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({option: voteType})
+    }).then((res) => res.json());
+}

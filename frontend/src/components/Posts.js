@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
-import {fetchPosts} from "../actions";
+import {fetchPosts, fetchVoteOnPost} from "../actions";
 import {timestampToDate, sortPostsByTimestamp, sortPostsByVoteScore} from "../utils/helper"
 import {Link} from 'react-router-dom';
+import FaArrowUp from 'react-icons/lib/fa/arrow-up';
+import FaArrowDown from 'react-icons/lib/fa/arrow-down';
 
 class Posts extends Component {
     state = {
@@ -28,6 +30,10 @@ class Posts extends Component {
         return '/' + (category ? category.path : categoryName);
     }
 
+    vote(postId, voteType) {
+        this.props.dispatch(fetchVoteOnPost(postId, voteType));
+    }
+
     render() {
         let {posts} = this.props;
         const {orderBy} = this.state;
@@ -44,8 +50,14 @@ class Posts extends Component {
                 </div>
                 {posts && posts.map(p => (
                     <div key={p.id} className="row post">
-                        <div className="col-1">
-                            {p.voteScore}
+                        <div className="col-1 text-center">
+                            <button className="icon-btn" onClick={() => this.vote(p.id, 'upVote')}>
+                                <FaArrowUp/>
+                            </button>
+                            <h2 className="vote-score">{p.voteScore}</h2>
+                            <button className="icon-btn" onClick={() => this.vote(p.id, 'downVote')}>
+                                <FaArrowDown/>
+                            </button>
                         </div>
                         <div className="col">
                             <div>
@@ -55,7 +67,7 @@ class Posts extends Component {
                                     on <b>{timestampToDate(p.timestamp)}</b> {/*space*/}
                                     in <Link to={this.getCategoryPathFromName(p.category)}><b>{p.category}</b></Link>
                                 </div>
-                                <div></div>
+                                <div><b>{p.commentCount}</b> comments | </div>
                             </div>
                         </div>
                     </div>
