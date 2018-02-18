@@ -6,7 +6,6 @@ import {timestampToDate, sortPostsByTimestamp, sortPostsByVoteScore} from "../ut
 import {Link} from 'react-router-dom';
 import FaArrowUp from 'react-icons/lib/fa/arrow-up';
 import FaArrowDown from 'react-icons/lib/fa/arrow-down';
-import PostDetails from "./PostDetails";
 
 class Posts extends Component {
     state = {
@@ -36,9 +35,9 @@ class Posts extends Component {
     }
 
     render() {
-        let {posts, category} = this.props;
         const {orderBy} = this.state;
 
+        let posts = this.props.posts.filter(p => !p.deleted);
         posts = orderBy === 'voteScore' ? sortPostsByVoteScore(posts) : sortPostsByTimestamp(posts);
 
         return (
@@ -79,8 +78,6 @@ class Posts extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    console.log('Posts state', state);
-    console.log('ownProps state', ownProps);
     return {
         categories: state.categories,
         posts: ownProps.category ? state.posts.filter(p => p.category === ownProps.category) : state.posts

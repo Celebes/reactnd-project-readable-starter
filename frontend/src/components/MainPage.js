@@ -6,8 +6,6 @@ import Categories from "./Categories";
 
 class MainPage extends Component {
     render() {
-        const {categories} = this.props;
-
         return (
             <div>
                 <h1><b>/r/all</b></h1>
@@ -20,11 +18,4 @@ class MainPage extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    console.log('MainPage state', state);
-    return {
-        posts: state.posts
-    }
-}
-
-export default withRouter(connect(mapStateToProps)(MainPage));
+export default MainPage;

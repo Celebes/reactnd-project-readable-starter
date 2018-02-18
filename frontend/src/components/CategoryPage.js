@@ -6,7 +6,7 @@ import Categories from "./Categories";
 
 class CategoryPage extends Component {
     render() {
-        const category = this.props.location.pathname.substring(1);
+        const category = this.props.match.params.category;
 
         return (
             <div>

@@ -14,7 +14,7 @@ nav {
     margin-right: 5px;
 }
 
-.post {
+.post, .comment {
     margin-bottom: 10px;
     border: 1px solid black;
     padding: 5px;

@@ -15,9 +15,26 @@ export function fetchPosts() {
         .then((res) => res.json());
 }
 
+export function fetchComments(postId) {
+    return fetch(`${ROOT_URL}/posts/${postId}/comments`, AUTH_HEADER)
+        .then((res) => res.json());
+}
+
 export function voteOnPost(postId, voteType) {
     console.log('api -> voteOnPost', postId, voteType);
     return fetch(`${ROOT_URL}/posts/${postId}`, {
+        headers: {
+            'Authorization': 'whatever-you-want',
+            'content-type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({option: voteType})
+    }).then((res) => res.json());
+}
+
+export function voteOnComment(commentId, voteType) {
+    console.log('api -> voteOnPost', commentId, voteType);
+    return fetch(`${ROOT_URL}/comments/${commentId}`, {
         headers: {
             'Authorization': 'whatever-you-want',
             'content-type': 'application/json'

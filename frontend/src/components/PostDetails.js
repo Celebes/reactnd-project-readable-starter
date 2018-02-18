@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
+import Comments from "./Comments";
 
 class PostDetails extends Component {
     render() {
-        console.log('PostDetails props', this.props);
+        const postId = this.props.match.params.postId;
 
         return (
             <div>
-                post
+                <h1>Comments:</h1>
+                <Comments postId={postId}/>
             </div>
         )
     }
