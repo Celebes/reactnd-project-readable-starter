@@ -3,6 +3,7 @@ import * as API from '../utils/api';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
+export const EDIT_POST = 'EDIT_POST';
 export const VOTE_ON_POST = 'VOTE_ON_POST';
 
 export function receiveCategories(categories) {
@@ -47,4 +48,15 @@ export function voteOnPost(post) {
 
 export const fetchVoteOnPost = (postId, voteType) => dispatch => (
     API.voteOnPost(postId, voteType).then(result => dispatch(voteOnPost(result)))
+);
+
+export function editPost(post) {
+    return {
+        type: EDIT_POST,
+        post
+    };
+}
+
+export const fetchEditPost = (postId, newTitle, newBody) => dispatch => (
+    API.editPost(postId, newTitle, newBody).then(result => dispatch(editPost(result)))
 );

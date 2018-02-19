@@ -38,6 +38,18 @@ export function voteOnPost(postId, voteType) {
     }).then((res) => res.json());
 }
 
+export function editPost(postId, newTitle, newBody) {
+    console.log('api -> editPost', postId, newTitle, newBody);
+    return fetch(`${ROOT_URL}/posts/${postId}`, {
+        headers: {
+            'Authorization': 'whatever-you-want',
+            'content-type': 'application/json'
+        },
+        method: 'PUT',
+        body: JSON.stringify({title: newTitle, body: newBody})
+    }).then((res) => res.json());
+}
+
 export function voteOnComment(commentId, voteType) {
     console.log('api -> voteOnPost', commentId, voteType);
     return fetch(`${ROOT_URL}/comments/${commentId}`, {
