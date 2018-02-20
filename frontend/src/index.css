@@ -47,6 +47,7 @@ nav {
 
 .modalz {
     width: 800px;
+    height: 600px;
     margin: auto;
     position: absolute;
     top: 0;
@@ -65,8 +66,4 @@ nav {
 
 .edit-post-modal {
     height: 400px;
-}
-
-.modal-input {
-    width: 100%;
 }

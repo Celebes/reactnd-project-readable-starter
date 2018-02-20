@@ -1,4 +1,11 @@
-import {RECEIVE_CATEGORIES, RECEIVE_POSTS, VOTE_ON_POST, RECEIVE_POST, EDIT_POST} from "../actions";
+import {
+    RECEIVE_CATEGORIES,
+    RECEIVE_POSTS,
+    VOTE_ON_POST,
+    RECEIVE_POST,
+    EDIT_POST,
+    ADD_POST
+} from "../actions";
 import {combineReducers} from 'redux';
 import {replacePostById} from "../utils/helper";
 
@@ -27,6 +34,8 @@ function posts(state = [], action) {
             return replacePostById(state, action.post);
         case EDIT_POST:
             return replacePostById(state, action.post);
+        case ADD_POST:
+            return [...state, action.post];
         default:
             return state;
     }

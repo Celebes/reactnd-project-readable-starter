@@ -87,11 +87,11 @@ class Post extends Component {
                             <h1>EDIT POST</h1>
                             <div>
                                 <h3>Edit title:</h3>
-                                <input defaultValue={editPost.title} className='modal-input' type="text" ref={(input) => this.editTitleInput = input}/>
+                                <input defaultValue={editPost.title} style={{width: '100%'}} type="text" ref={(input) => this.editTitleInput = input}/>
                             </div>
                             <div>
                                 <h3>Edit body:</h3>
-                                <textarea defaultValue={editPost.body} ref={(input) => this.editBodyInput = input} rows="4" cols="100"/>
+                                <textarea defaultValue={editPost.body} ref={(input) => this.editBodyInput = input} rows="4" style={{width: '100%'}}/>
                             </div>
                             <div>
                                 <button className="btn btn-primary" onClick={this.saveEdit}>SAVE</button>

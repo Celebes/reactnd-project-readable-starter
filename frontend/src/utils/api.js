@@ -26,6 +26,18 @@ export function fetchPost(postId) {
         .then((res) => res.json());
 }
 
+export function addPost(newPost) {
+    console.log('api -> addPost', newPost);
+    return fetch(`${ROOT_URL}/posts`, {
+        headers: {
+            'Authorization': 'whatever-you-want',
+            'content-type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(newPost)
+    }).then((res) => res.json());
+}
+
 export function voteOnPost(postId, voteType) {
     console.log('api -> voteOnPost', postId, voteType);
     return fetch(`${ROOT_URL}/posts/${postId}`, {

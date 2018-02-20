@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
 import Posts from "./Posts";
 import Categories from "./Categories";
+import NewPost from "./NewPost";
 
 class CategoryPage extends Component {
     render() {
@@ -11,6 +12,7 @@ class CategoryPage extends Component {
         return (
             <div>
                 <h1><b>/r/{category}</b></h1>
+                <NewPost/>
                 <h1>Categories:</h1>
                 <Categories/>
                 <h1>Posts:</h1>

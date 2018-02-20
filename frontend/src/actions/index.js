@@ -4,6 +4,7 @@ export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const EDIT_POST = 'EDIT_POST';
+export const ADD_POST = 'ADD_POST';
 export const VOTE_ON_POST = 'VOTE_ON_POST';
 
 export function receiveCategories(categories) {
@@ -59,4 +60,15 @@ export function editPost(post) {
 
 export const fetchEditPost = (postId, newTitle, newBody) => dispatch => (
     API.editPost(postId, newTitle, newBody).then(result => dispatch(editPost(result)))
+);
+
+export function addPost(post) {
+    return {
+        type: ADD_POST,
+        post
+    };
+}
+
+export const fetchAddPost = (post) => dispatch => (
+    API.addPost(post).then(result => dispatch(addPost(result)))
 );
