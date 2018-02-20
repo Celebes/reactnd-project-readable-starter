@@ -29,8 +29,6 @@ class NewPost extends Component {
     handleInputChange(event) {
         const {value, name} = event.target;
 
-        console.log('handleInputChange', value, name);
-
         this.setState({
             [name]: value
         });
@@ -117,9 +115,7 @@ class NewPost extends Component {
                         </div>
                         <button style={{marginTop: '20px'}} className="btn btn-primary" type="submit">ADD</button>
                     </form>
-
                 </Modal>
-
             </div>
         )
     }

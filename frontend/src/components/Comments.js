@@ -1,29 +1,27 @@
 import React, {Component} from 'react';
-import {fetchComments, voteOnComment} from "../utils/api";
+import {fetchComments, fetchVoteOnComment} from "../actions";
 import {timestampToDate} from "../utils/helper";
 import FaArrowUp from 'react-icons/lib/fa/arrow-up';
 import FaArrowDown from 'react-icons/lib/fa/arrow-down';
+import NewComment from "./NewComment";
+import {withRouter} from "react-router";
+import {connect} from "react-redux";
 
 class Comments extends Component {
-    state = {
-        comments: []
-    }
-
     componentDidMount() {
-        fetchComments(this.props.postId).then(result => this.setState({comments: result}));
+        this.props.dispatch(fetchComments(this.props.postId))
     }
 
     vote(commentId, voteType) {
-        voteOnComment(commentId, voteType).then(updatedComment => this.setState({
-            comments: this.state.comments.map(c => c.id === updatedComment.id ? updatedComment : c) // replacing old post with voted one
-        }));
+        this.props.dispatch(fetchVoteOnComment(commentId, voteType));
     }
 
     render() {
-        const comments = this.state.comments.filter(c => !c.deleted);
+        const {comments} = this.props;
 
         return (
             <div className="container">
+                <NewComment postId={this.props.postId}/>
                 {comments && comments.map(c => (
                     <div key={c.id} className="row comment">
                         <div className="col-1 text-center">
@@ -50,4 +48,10 @@ class Comments extends Component {
     }
 }
 
-export default Comments;
+function mapStateToProps(state) {
+    return {
+        comments: state.comments.filter(c => !c.deleted)
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Comments));

@@ -83,3 +83,15 @@ export function voteOnComment(commentId, voteType) {
         body: JSON.stringify({option: voteType})
     }).then((res) => res.json());
 }
+
+export function addComment(newComment) {
+    console.log('api -> addComment', newComment);
+    return fetch(`${ROOT_URL}/comments`, {
+        headers: {
+            'Authorization': 'whatever-you-want',
+            'content-type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(newComment)
+    }).then((res) => res.json());
+}

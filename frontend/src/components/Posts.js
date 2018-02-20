@@ -26,7 +26,7 @@ class Posts extends Component {
         const {orderBy} = this.state;
 
         let posts = this.props.posts.filter(p => !p.deleted);
-        posts = orderBy === 'voteScore' ? sortPostsByVoteScore(posts) : sortPostsByTimestamp(posts);
+        posts = (orderBy === 'voteScore') ? sortPostsByVoteScore(posts) : sortPostsByTimestamp(posts);
 
         return (
             <div className="container">

@@ -19,8 +19,8 @@ export function sortPostsByVoteScore(posts) {
     return posts.sort((a, b) => (a.voteScore < b.voteScore) ? 1 : ((a.voteScore > b.voteScore) ? -1 : 0))
 }
 
-export function replacePostById(posts, post) {
-    return posts.map(p => p.id === post.id ? post : p);
+export function replaceObjectInArrayById(array, obj) {
+    return array.map(o => o.id === obj.id ? obj : o);
 }
 
 export function generateUUIDv4() {

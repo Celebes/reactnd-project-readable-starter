@@ -1,12 +1,22 @@
 import * as API from '../utils/api';
 
+// categories
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+
+// posts
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const EDIT_POST = 'EDIT_POST';
 export const ADD_POST = 'ADD_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const VOTE_ON_POST = 'VOTE_ON_POST';
+
+// comments
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const VOTE_ON_COMMENT = 'VOTE_ON_COMMENT';
 
 export function receiveCategories(categories) {
     return {
@@ -83,4 +93,37 @@ export function deletePost(post) {
 
 export const fetchDeletePost = (post) => dispatch => (
     API.deletePost(post).then(result => dispatch(deletePost(result)))
+);
+
+export function addComment(comment) {
+    return {
+        type: ADD_COMMENT,
+        comment
+    };
+}
+
+export const fetchAddComment = (comment) => dispatch => (
+    API.addComment(comment).then(result => dispatch(addComment(result)))
+);
+
+export function receiveComments(comments) {
+    return {
+        type: RECEIVE_COMMENTS,
+        comments
+    };
+}
+
+export const fetchComments = (postId) => dispatch => (
+    API.fetchComments(postId).then(result => dispatch(receiveComments(result)))
+);
+
+export function voteOnComment(comment) {
+    return {
+        type: VOTE_ON_COMMENT,
+        comment
+    };
+}
+
+export const fetchVoteOnComment = (commentId, voteType) => dispatch => (
+    API.voteOnComment(commentId, voteType).then(result => dispatch(voteOnComment(result)))
 );

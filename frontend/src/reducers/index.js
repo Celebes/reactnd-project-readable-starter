@@ -5,10 +5,15 @@ import {
     RECEIVE_POST,
     EDIT_POST,
     ADD_POST,
-    DELETE_POST
+    DELETE_POST,
+    RECEIVE_COMMENTS,
+    ADD_COMMENT,
+    EDIT_COMMENT,
+    DELETE_COMMENT,
+    VOTE_ON_COMMENT
 } from "../actions";
 import {combineReducers} from 'redux';
-import {replacePostById} from "../utils/helper";
+import {replaceObjectInArrayById} from "../utils/helper";
 
 function categories(state = [], action) {
     switch (action.type) {
@@ -20,21 +25,20 @@ function categories(state = [], action) {
 }
 
 function posts(state = [], action) {
-    console.log('posts reducer, state = ', state, 'action = ', action);
     switch (action.type) {
         case RECEIVE_POSTS:
             return action.posts;
         case RECEIVE_POST:
             const postInState = state.find(post => post.id === action.post.id);
             if (postInState) {
-                return replacePostById(state, action.post);
+                return replaceObjectInArrayById(state, action.post);
             } else {
                 return [action.post, ...state];
             }
         case VOTE_ON_POST:
-            return replacePostById(state, action.post);
+            return replaceObjectInArrayById(state, action.post);
         case EDIT_POST:
-            return replacePostById(state, action.post);
+            return replaceObjectInArrayById(state, action.post);
         case ADD_POST:
             return [...state, action.post];
         case DELETE_POST:
@@ -44,4 +48,22 @@ function posts(state = [], action) {
     }
 }
 
-export default combineReducers({categories, posts});
+function comments(state = [], action) {
+    console.log('comments reducer, state=', state, 'action=', action);
+    switch (action.type) {
+        case RECEIVE_COMMENTS:
+            return action.comments;
+        case ADD_COMMENT:
+            return [...state, action.comment];
+        case EDIT_COMMENT:
+            return replaceObjectInArrayById(state, action.comment);
+        case DELETE_COMMENT:
+            return state;
+        case VOTE_ON_COMMENT:
+            return replaceObjectInArrayById(state, action.comment);
+        default:
+            return state;
+    }
+}
+
+export default combineReducers({categories, posts, comments});
