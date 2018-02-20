@@ -35,7 +35,7 @@ class Post extends Component {
     }
 
     deletePost = (post) => {
-        this.props.dispatch(fetchDeletePost(post));
+        this.props.dispatch(fetchDeletePost(post)).then(() => this.props.detailsPage ? this.props.history.push("/") : null);
     }
 
     vote(postId, voteType) {
