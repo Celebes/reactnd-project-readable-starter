@@ -4,7 +4,8 @@ import {
     VOTE_ON_POST,
     RECEIVE_POST,
     EDIT_POST,
-    ADD_POST
+    ADD_POST,
+    DELETE_POST
 } from "../actions";
 import {combineReducers} from 'redux';
 import {replacePostById} from "../utils/helper";
@@ -36,6 +37,8 @@ function posts(state = [], action) {
             return replacePostById(state, action.post);
         case ADD_POST:
             return [...state, action.post];
+        case DELETE_POST:
+            return state.filter(p => p.id !== action.post.id);
         default:
             return state;
     }

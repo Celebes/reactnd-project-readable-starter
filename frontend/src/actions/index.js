@@ -5,6 +5,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const EDIT_POST = 'EDIT_POST';
 export const ADD_POST = 'ADD_POST';
+export const DELETE_POST = 'DELETE_POST';
 export const VOTE_ON_POST = 'VOTE_ON_POST';
 
 export function receiveCategories(categories) {
@@ -71,4 +72,15 @@ export function addPost(post) {
 
 export const fetchAddPost = (post) => dispatch => (
     API.addPost(post).then(result => dispatch(addPost(result)))
+);
+
+export function deletePost(post) {
+    return {
+        type: DELETE_POST,
+        post
+    };
+}
+
+export const fetchDeletePost = (post) => dispatch => (
+    API.deletePost(post).then(result => dispatch(deletePost(result)))
 );

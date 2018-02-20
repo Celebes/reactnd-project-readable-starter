@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import FaArrowUp from 'react-icons/lib/fa/arrow-up';
 import FaArrowDown from 'react-icons/lib/fa/arrow-down';
-import {fetchVoteOnPost, fetchEditPost} from "../actions";
+import {fetchVoteOnPost, fetchEditPost, fetchDeletePost} from "../actions";
 import {timestampToDate} from "../utils/helper";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
@@ -32,6 +32,10 @@ class Post extends Component {
         const newBody = this.editBodyInput.value;
 
         this.props.dispatch(fetchEditPost(editPost.id, newTitle, newBody)).then(() => this.closeEditModal());
+    }
+
+    deletePost = (post) => {
+        this.props.dispatch(fetchDeletePost(post));
     }
 
     vote(postId, voteType) {
@@ -71,7 +75,7 @@ class Post extends Component {
                         <div>
                             <b>{post.commentCount}</b> comments | {/*space*/}
                             <button className="btn btn-primary btn-sm" onClick={() => this.openEditModal(post)}>edit</button> | {/*space*/}
-                            <button className="btn btn-danger btn-sm">delete</button> | {/*space*/}
+                            <button className="btn btn-danger btn-sm" onClick={() => this.deletePost(post)}>delete</button> | {/*space*/}
                         </div>
                     </div>
                 </div>

@@ -62,6 +62,16 @@ export function editPost(postId, newTitle, newBody) {
     }).then((res) => res.json());
 }
 
+export function deletePost({id}) {
+    console.log('api -> deletePost', id);
+    return fetch(`${ROOT_URL}/posts/${id}`, {
+        headers: {
+            'Authorization': 'whatever-you-want'
+        },
+        method: 'DELETE'
+    }).then((res) => res.json());
+}
+
 export function voteOnComment(commentId, voteType) {
     console.log('api -> voteOnPost', commentId, voteType);
     return fetch(`${ROOT_URL}/comments/${commentId}`, {
