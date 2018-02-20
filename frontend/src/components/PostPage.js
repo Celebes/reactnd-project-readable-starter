@@ -21,7 +21,7 @@ class PostPage extends Component {
                     <h1>Comments:</h1>
                     <Comments postId={post.id}/>
                 </div>
-                : <div>Loading</div>
+                : <div>404 post not found</div>
         )
     }
 }

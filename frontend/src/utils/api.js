@@ -105,3 +105,15 @@ export function deleteComment({id}) {
         method: 'DELETE'
     }).then((res) => res.json());
 }
+
+export function editComment(commentId, timestamp, newBody) {
+    console.log('api -> editComment', commentId, timestamp, newBody);
+    return fetch(`${ROOT_URL}/comments/${commentId}`, {
+        headers: {
+            'Authorization': 'whatever-you-want',
+            'content-type': 'application/json'
+        },
+        method: 'PUT',
+        body: JSON.stringify({timestamp: timestamp, body: newBody})
+    }).then((res) => res.json());
+}

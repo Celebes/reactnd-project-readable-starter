@@ -49,7 +49,6 @@ function posts(state = [], action) {
 }
 
 function comments(state = [], action) {
-    console.log('comments reducer, state=', state, 'action=', action);
     switch (action.type) {
         case RECEIVE_COMMENTS:
             return action.comments;

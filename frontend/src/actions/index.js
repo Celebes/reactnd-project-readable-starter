@@ -138,3 +138,14 @@ export function deleteComment(comment) {
 export const fetchDeleteComment = (comment) => dispatch => (
     API.deleteComment(comment).then(result => dispatch(deleteComment(result)))
 );
+
+export function editComment(comment) {
+    return {
+        type: EDIT_COMMENT,
+        comment
+    };
+}
+
+export const fetchEditComment = (commentId, timestamp, newBody) => dispatch => (
+    API.editComment(commentId, timestamp, newBody).then(result => dispatch(editComment(result)))
+);
