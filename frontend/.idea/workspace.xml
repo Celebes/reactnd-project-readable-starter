@@ -24,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostPage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PostPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PostPage.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="482">
@@ -32,6 +32,19 @@
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="600">
+                <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -148,6 +161,7 @@
         <option value="$PROJECT_DIR$/src/utils/api.js" />
         <option value="$PROJECT_DIR$/src/components/Comments.js" />
         <option value="$PROJECT_DIR$/src/components/PostPage.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -351,12 +365,12 @@
       <workItem from="1518874479804" duration="10742000" />
       <workItem from="1518950249412" duration="24972000" />
       <workItem from="1519054083871" duration="7812000" />
-      <workItem from="1519112272519" duration="10740000" />
+      <workItem from="1519112272519" duration="11182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54266000" />
+    <option name="totallyTimeSpent" value="54708000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -588,51 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding>
-              <marker date="1518873430504" expanded="true" signature="13357:13385" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="20280:20311" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="20293:20309" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="20417:20482" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="20561:20616" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="20574:20614" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="22478:22775" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="22502:22652" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="22557:22589" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="22611:22646" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="22666:22773" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="22687:22762" ph="&lt;div/&gt;" />
-              <marker date="1518873430504" expanded="true" signature="25202:25268" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="25301:25588" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="31100:31150" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="31257:31344" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="34426:34691" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="34430:34624" ph="//..." />
-              <marker date="1518873430504" expanded="true" signature="37126:37210" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="37211:37315" ph="//..." />
-              <marker date="1518873430504" expanded="true" signature="43162:43309" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="43249:43302" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="57214:57626" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="57236:57615" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="57253:57611" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="57340:57575" ph="//..." />
-              <marker date="1518873430504" expanded="true" signature="65566:65644" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="65683:65764" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="67437:67515" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="67554:67577" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="68488:68566" ph="..." />
-              <marker date="1518873430504" expanded="true" signature="68604:68794" ph="{...}" />
-              <marker date="1518873430504" expanded="true" signature="92412:92476" ph="{...}" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Categories.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -778,6 +747,17 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="600">
+            <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
