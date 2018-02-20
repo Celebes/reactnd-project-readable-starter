@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchComments, fetchVoteOnComment} from "../actions";
+import {fetchComments, fetchDeleteComment, fetchVoteOnComment} from "../actions";
 import {timestampToDate} from "../utils/helper";
 import FaArrowUp from 'react-icons/lib/fa/arrow-up';
 import FaArrowDown from 'react-icons/lib/fa/arrow-down';
@@ -14,6 +14,10 @@ class Comments extends Component {
 
     vote(commentId, voteType) {
         this.props.dispatch(fetchVoteOnComment(commentId, voteType));
+    }
+
+    deleteComment = (comment) => {
+        this.props.dispatch(fetchDeleteComment(comment));
     }
 
     render() {
@@ -39,6 +43,10 @@ class Comments extends Component {
                                 <pre>
                                     {c.body}
                                 </pre>
+                            </div>
+                            <div>
+                                {/*<button className="btn btn-primary btn-sm" onClick={() => this.openEditModal(post)}>edit</button> | /!*space*!/*/}
+                                <button className="btn btn-danger btn-sm" onClick={() => this.deleteComment(c)}>delete</button> | {/*space*/}
                             </div>
                         </div>
                     </div>

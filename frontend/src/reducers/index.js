@@ -58,7 +58,7 @@ function comments(state = [], action) {
         case EDIT_COMMENT:
             return replaceObjectInArrayById(state, action.comment);
         case DELETE_COMMENT:
-            return state;
+            return state.filter(c => c.id !== action.comment.id);
         case VOTE_ON_COMMENT:
             return replaceObjectInArrayById(state, action.comment);
         default:

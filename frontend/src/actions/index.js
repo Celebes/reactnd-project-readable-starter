@@ -127,3 +127,14 @@ export function voteOnComment(comment) {
 export const fetchVoteOnComment = (commentId, voteType) => dispatch => (
     API.voteOnComment(commentId, voteType).then(result => dispatch(voteOnComment(result)))
 );
+
+export function deleteComment(comment) {
+    return {
+        type: DELETE_COMMENT,
+        comment
+    };
+}
+
+export const fetchDeleteComment = (comment) => dispatch => (
+    API.deleteComment(comment).then(result => dispatch(deleteComment(result)))
+);

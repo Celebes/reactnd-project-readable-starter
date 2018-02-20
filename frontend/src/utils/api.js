@@ -95,3 +95,13 @@ export function addComment(newComment) {
         body: JSON.stringify(newComment)
     }).then((res) => res.json());
 }
+
+export function deleteComment({id}) {
+    console.log('api -> deleteComment', id);
+    return fetch(`${ROOT_URL}/comments/${id}`, {
+        headers: {
+            'Authorization': 'whatever-you-want'
+        },
+        method: 'DELETE'
+    }).then((res) => res.json());
+}
